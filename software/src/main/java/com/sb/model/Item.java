@@ -3,14 +3,17 @@ package com.sb.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "item")
-public class Item {
+public class Item implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private Integer id;
 
   @Column
   @NotNull
@@ -19,21 +22,16 @@ public class Item {
 
   @Column
   @NotNull
-  private int price;
+  private Integer price;
 
-  /*private List<Order> orderList;
-  @ManyToMany(
-    cascade = {CascadeType.PERSIST, CascadeType.MERGE},
-    mappedBy = "items",
-    targetEntity = Order.class
-  )*/
-
+  @ManyToMany(targetEntity = com.sb.model.Order.class, mappedBy = "items")
+  private Set<Order> orders = new HashSet<>();
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -49,15 +47,15 @@ public class Item {
     return price;
   }
 
-  public void setPrice(int price) {
+  public void setPrice(Integer price) {
     this.price = price;
   }
 
-  /*public List<Order> getOrderList() {
-    return orderList;
-  }
+    public Set<Order> getOrders() {
+        return orders;
+    }
 
-  public void setOrderList(List<Order> orderList) {
-    this.orderList = orderList;
-  }*/
+    public void setOrders(Set<Order> orders) {
+        this.orders = orders;
+    }
 }

@@ -4,17 +4,20 @@ package com.sb.model;
 
 import org.hibernate.validator.constraints.Email;
 
+//import javax.persistence.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "customer")
-public class Customer {
+public class Customer implements Serializable {
+    public Customer(){}
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private Integer id;
 
   @Column
   @NotNull
@@ -34,17 +37,14 @@ public class Customer {
   private Address address;
 
 
-  /*@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-  private List<Order> orderList;*/
+  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+  private List<Order> orderList;
 
-
-
-
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -72,11 +72,19 @@ public class Customer {
     this.address = address;
   }
 
-  /*public List<Order> getOrderList() {
-    return orderList;
+    public List<Order> getCustomerOrders() {
+        return orderList;
+    }
+
+    public void setCustomerOrders(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+  public String getTelephone() {
+    return telephone;
   }
 
-  public void setOrderList(List<Order> orderList) {
-    this.orderList = orderList;
-  }*/
+  public void setTelephone(String telephone) {
+    this.telephone = telephone;
+  }
 }

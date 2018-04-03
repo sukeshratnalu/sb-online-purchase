@@ -3,15 +3,17 @@ package com.sb.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
-@Table(name = "order")
-public class Order {
+@Table(name = "customer_order")
+public class Order implements Serializable{
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private int id;
+  private Integer id;
 
   @Column
   @NotNull
@@ -20,25 +22,26 @@ public class Order {
 
   @Column
   @NotNull
-  private int price;
+  private Integer price;
 
-  /*private List<Item> itemList;
-  @ManyToMany(
-    targetEntity=Item.class,
-    cascade={CascadeType.PERSIST, CascadeType.MERGE}
-  )
-  @JoinTable(
-    name="ITEMS_ORDER",
-    joinColumns=@JoinColumn(name="ORDER_ID"),
-    inverseJoinColumns=@JoinColumn(name="ITEM_ID")
-  )*/
+  @ManyToOne
+  @JoinColumn(name = "customer_id")
+  private Customer customer;
+
+    @ManyToMany(targetEntity = com.sb.model.Item.class, cascade = { CascadeType.ALL })
+    @JoinTable(
+            name="item_order",
+            joinColumns={@JoinColumn(name="order_id")},
+            inverseJoinColumns={@JoinColumn(name="item_id")}
+    )
+  private Set<Item> items;
 
 
   public int getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -54,15 +57,23 @@ public class Order {
     return price;
   }
 
-  public void setPrice(int price) {
+  public void setPrice(Integer price) {
     this.price = price;
   }
 
-  /*public List<Item> getItemList() {
-    return itemList;
-  }
+    public Customer getCustomer() {
+        return customer;
+    }
 
-  public void setItemList(List<Item> itemList) {
-    this.itemList = itemList;
-  }*/
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Set<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(Set<Item> items) {
+        this.items = items;
+    }
 }

@@ -1,11 +1,16 @@
 package com.sb.dao;
 
 import com.sb.model.Customer;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class CustomerDAOImpl implements CustomerDAO {
 
   @Autowired
@@ -18,7 +23,8 @@ public class CustomerDAOImpl implements CustomerDAO {
 
   @Override
   public List<Customer> getAllCustomers() {
-    return null;
+    return sessionFactory.getCurrentSession().createQuery("from Customer")
+            .list();
   }
 
   @Override
