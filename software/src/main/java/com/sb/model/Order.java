@@ -17,7 +17,7 @@ public class Order implements Serializable{
 
   @Column
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 40)
   private String name;
 
   @Column

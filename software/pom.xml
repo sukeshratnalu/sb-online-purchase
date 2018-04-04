@@ -58,6 +58,12 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-search-orm</artifactId>
+      <version>5.9.1.Final</version>
+    </dependency>
+
     <!--Hibernate Dependencies-->
     <dependency>
       <groupId>org.hibernate</groupId>

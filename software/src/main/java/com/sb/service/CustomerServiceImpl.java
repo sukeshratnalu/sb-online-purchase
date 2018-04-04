@@ -2,6 +2,7 @@ package com.sb.service;
 
 import com.sb.dao.CustomerDAO;
 import com.sb.model.Customer;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,17 +27,19 @@ public class CustomerServiceImpl implements CustomerService {
   }
 
   @Override
-  public void deleteCustomer(int customerId) {
-
+  public void deleteCustomer(Integer customerId) {
+    customerDAO.deleteCustomer(customerId);
   }
 
   @Override
   public Customer updateCustomer(Customer customer) {
-    return null;
+    return customerDAO.updateCustomer(customer);
   }
 
   @Override
-  public Customer getCustomer(int customerId) {
-    return null;
+  public Customer getCustomer(Integer customerId) {
+    Customer customer = customerDAO.getCustomer(customerId);
+    Hibernate.initialize(customer.getCustomerOrders());
+    return customer;
   }
 }

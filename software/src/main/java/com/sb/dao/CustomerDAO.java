@@ -9,10 +9,12 @@ public interface CustomerDAO {
 
   public List<Customer> getAllCustomers();
 
-  public void deleteCustomer(int customerId);
+  public void deleteCustomer(Integer customerId);
 
   public Customer updateCustomer(Customer customer);
 
-  public Customer getCustomer(int customerId);
+  public Customer getCustomer(Integer customerId);
+
+  public List<Customer> filterCustomers();
 
 }

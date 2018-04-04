@@ -17,7 +17,7 @@ public class Item implements Serializable {
 
   @Column
   @NotNull
-  @Size(min = 3, max = 10)
+  @Size(min = 3, max = 40)
   private String name;
 
   @Column
@@ -27,7 +27,7 @@ public class Item implements Serializable {
   @ManyToMany(targetEntity = com.sb.model.Order.class, mappedBy = "items")
   private Set<Order> orders = new HashSet<>();
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
@@ -43,7 +43,7 @@ public class Item implements Serializable {
     this.name = name;
   }
 
-  public int getPrice() {
+  public Integer getPrice() {
     return price;
   }
 

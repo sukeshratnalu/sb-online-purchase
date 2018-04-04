@@ -17,7 +17,7 @@
   <title> Online-purchase </title>
 </head>
 <body>
-<div align="center"><h2>Customer Form</h2>
+<div align="center"><h1>Customer Form</h1>
 </div>
 <div align="center">
   <form:form action="saveCustomer" method="post" modelAttribute="customer">
@@ -52,7 +52,7 @@
         <td><form:input path="address.pin" /></td>
       </tr>
       <tr>
-        <td colspan="2" align="center"><input type="submit" value="Register" /></td>
+        <td colspan="2" align="center"><input type="submit" value="Save" /></td>
       </tr>
     </table>
   </form:form>

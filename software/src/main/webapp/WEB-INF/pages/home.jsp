@@ -29,7 +29,7 @@
     <div align="center">
             <h1>Customer List</h1>
             <h3>
-                <a href="newCustomer">New Customer</a>
+                <a href="newCustomer">New Customer</a> <a href="newItem">New Item</a>
             </h3>
 
             <table border="1">
@@ -48,8 +48,9 @@
                         <td>Street: ${customer.address!=null?customer.address.street:''},
                             City: ${customer.address!=null?customer.address.city:''}</td>
                         <td>${customer.telephone}</td>
-                        <td><a href="editCustomer?id=${customer.id}">Edit</a>
-                                 <a href="deleteCustomer?id=${customer.id}">Delete</a></td>
+                        <td><a style="color: green;" href="itemList?id=${customer.id}">My Shopping</a> &nbsp;&nbsp; <a style="color: green;" href="customerOrder?id=${customer.id}">My Order</a> &nbsp;&nbsp;
+                            <a style="color: blue;" href="editCustomer?id=${customer.id}">Edit</a>
+                                 <a  style="color: red;" href="deleteCustomer?id=${customer.id}">Delete</a></td>
      
                     </tr>
                 </c:forEach>
