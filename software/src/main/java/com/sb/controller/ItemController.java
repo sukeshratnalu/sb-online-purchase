@@ -29,9 +29,6 @@ public class ItemController {
     List<Item> listItem = itemService.getAllItems();
     model.addObject("listItem", listItem);
     model.addObject("customerId",customerId);
-    System.out.println("model");
-    System.out.println(model);
-
     return model;
   }
 

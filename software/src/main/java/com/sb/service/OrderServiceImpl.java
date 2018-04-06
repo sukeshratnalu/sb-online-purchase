@@ -42,4 +42,9 @@ public class OrderServiceImpl implements OrderService {
     Hibernate.initialize(order.getItems());
     return order;
   }
+
+  @Override
+  public void deleteOrderedItem(Integer orderId, Integer itemId) {
+    orderDAO.deleteOrderedItem(orderId, itemId);
+  }
 }

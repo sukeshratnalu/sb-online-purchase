@@ -35,6 +35,9 @@
           </div>
           <h6 align="center">${item.name}</h6>
           <h6 align="center">Rs.${item.price}</h6>
+          <h6 align="center">
+             <a style="color: red"  href="removerOrderedItem?itemId=${item.id}&orderId=${orderId}&customerId=${customerId}">Remove Item</a>
+          </h6>
         </div>  
       </c:forEach>
     </div>

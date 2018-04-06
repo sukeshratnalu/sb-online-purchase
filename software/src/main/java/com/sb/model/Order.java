@@ -28,7 +28,7 @@ public class Order implements Serializable{
   @JoinColumn(name = "customer_id")
   private Customer customer;
 
-    @ManyToMany(targetEntity = com.sb.model.Item.class, cascade = { CascadeType.ALL })
+    @ManyToMany(targetEntity = com.sb.model.Item.class, cascade = { CascadeType.PERSIST, CascadeType.MERGE } )
     @JoinTable(
             name="item_order",
             joinColumns={@JoinColumn(name="order_id")},

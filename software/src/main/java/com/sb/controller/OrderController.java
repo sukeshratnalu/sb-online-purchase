@@ -57,18 +57,31 @@ public class OrderController {
   @RequestMapping(value = "/orderItems", method = RequestMethod.GET)
   public ModelAndView orderItems(HttpServletRequest request) {
     int orderId = Integer.parseInt(request.getParameter("id"));
+    int customerId = Integer.parseInt(request.getParameter("custId"));
     ModelAndView model = new ModelAndView("orderItems");
     Order order = orderService.getOrder(orderId);
     List<Item> listItem = new ArrayList<>(order.getItems());
     model.addObject("orderItems", listItem);
+    model.addObject("orderId", orderId);
+    model.addObject("customerId", customerId);
     return model;
   }
 
   @RequestMapping(value = "/deleteOrder", method = RequestMethod.GET)
-  public ModelAndView deleteItem(HttpServletRequest request) {
+  public ModelAndView deleteOrder(HttpServletRequest request) {
     int orderId = Integer.parseInt(request.getParameter("id"));
+    int customerId = Integer.parseInt(request.getParameter("custId"));
     orderService.deleteOrder(orderId);
-    return new ModelAndView("redirect:/");
+    return new ModelAndView("redirect:/customerOrder?id="+customerId);
+  }
+
+  @RequestMapping(value = "/removerOrderedItem", method = RequestMethod.GET)
+  public ModelAndView deletOrderedItem(HttpServletRequest request) {
+    int orderId = Integer.parseInt(request.getParameter("orderId"));
+    int itemId = Integer.parseInt(request.getParameter("itemId"));
+    int customerId = Integer.parseInt(request.getParameter("customerId"));
+    orderService.deleteOrderedItem(orderId, itemId);
+    return new ModelAndView("redirect:/customerOrder?id="+customerId);
   }
 
 }

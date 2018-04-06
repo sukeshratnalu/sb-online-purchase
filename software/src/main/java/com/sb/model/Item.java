@@ -24,7 +24,7 @@ public class Item implements Serializable {
   @NotNull
   private Integer price;
 
-  @ManyToMany(targetEntity = com.sb.model.Order.class, mappedBy = "items")
+  @ManyToMany(targetEntity = com.sb.model.Order.class, mappedBy = "items",cascade = CascadeType.ALL)
   private Set<Order> orders = new HashSet<>();
 
   public Integer getId() {

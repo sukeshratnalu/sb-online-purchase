@@ -14,4 +14,6 @@ public interface OrderDAO {
     public Order updateOrder(Order order);
 
     public Order getOrder(Integer orderId);
+
+    public void deleteOrderedItem(Integer orderId, Integer itemId);
 }

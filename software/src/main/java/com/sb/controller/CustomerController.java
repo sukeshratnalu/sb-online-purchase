@@ -71,7 +71,7 @@ public class CustomerController {
   }
 
   @RequestMapping(value = "/deleteCustomer", method = RequestMethod.GET)
-  public ModelAndView deleteEmployee(HttpServletRequest request) {
+  public ModelAndView deleteCustomer(HttpServletRequest request) {
     int customerId = Integer.parseInt(request.getParameter("id"));
     customerService.deleteCustomer(customerId);
     return new ModelAndView("redirect:/");
@@ -83,6 +83,7 @@ public class CustomerController {
     ModelAndView model = new ModelAndView("myOrder");
     Customer customer = customerService.getCustomer(customerId);
     model.addObject("customerOrder", customer.getCustomerOrders());
+    model.addObject("customerId", customerId);
     return model;
   }
 

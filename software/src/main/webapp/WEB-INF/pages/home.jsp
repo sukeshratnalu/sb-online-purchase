@@ -22,6 +22,10 @@
     }
 </style>
 <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Customer List</title>
 </head>
@@ -48,7 +52,8 @@
                         <td>Street: ${customer.address!=null?customer.address.street:''},
                             City: ${customer.address!=null?customer.address.city:''}</td>
                         <td>${customer.telephone}</td>
-                        <td><a style="color: green;" href="itemList?id=${customer.id}">My Shopping</a> &nbsp;&nbsp; <a style="color: green;" href="customerOrder?id=${customer.id}">My Order</a> &nbsp;&nbsp;
+                        <td><a style="color: green;" href="itemList?id=${customer.id}">Shopping</a> &nbsp;&nbsp;
+                            <a style="color: green;" href="customerOrder?id=${customer.id}">My Order</a> &nbsp;&nbsp;
                             <a style="color: blue;" href="editCustomer?id=${customer.id}">Edit</a>
                                  <a  style="color: red;" href="deleteCustomer?id=${customer.id}">Delete</a></td>
      

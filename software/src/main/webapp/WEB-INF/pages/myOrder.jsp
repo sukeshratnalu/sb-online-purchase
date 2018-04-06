@@ -29,17 +29,18 @@
           <h1>My Order List</h1>
           <table border="1">
    
-              <th>Order ID</th>
+              <th>Order</th>
+              <th>Items</th>
               <th>Price</th>
               <th>Action</th>
               <c:forEach var="order" items="${customerOrder}">
                   <tr>
    
                       <td>${order.name}</td>
+                      <td><a style="color: green;" href="orderItems?id=${order.id}&custId=${customerId}">Order Items</a></td>
                       <td>${order.price}</td>
-         
-                      <td><a style="color: green;" href="orderItems?id=${order.id}">Order Items</a> &nbsp;&nbsp;
-                               <%--<a  style="color: red;" href="deleteOrder?id=${order.id}">Delete</a>--%></td>
+                      <td><a style="color: blue;" href="orderItems?id=${order.id}&custId=${customerId}">Update Items</a> &nbsp;&nbsp;
+                               <a  style="color: red;" href="deleteOrder?id=${order.id}&custId=${customerId}">Delete</a></td>
    
                   </tr>
               </c:forEach>
