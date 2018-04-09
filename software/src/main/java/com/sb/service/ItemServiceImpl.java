@@ -38,4 +38,14 @@ public class ItemServiceImpl implements ItemService {
   public Item getItem(Integer itemId) {
     return itemDAO.getItem(itemId);
   }
+
+  @Override
+  public List<Item> filterItemsByPrice(Integer minPrice, Integer maxPrice) {
+    return itemDAO.filterItemsByPrice(minPrice, maxPrice);
+  }
+
+  @Override
+  public List<Item> filterItems(String name) {
+    return itemDAO.filterItems(name);
+  }
 }

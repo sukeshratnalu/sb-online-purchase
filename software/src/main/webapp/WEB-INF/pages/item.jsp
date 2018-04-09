@@ -11,6 +11,7 @@
     margin-left: 20px;
     margin-bottom: 10px;
     padding-bottom: 7px;
+    margin-top: 10px;
   }
   .item-list{
    padding-left: 164px!important;
@@ -29,6 +30,14 @@
 <h5 align="center">
    <a  href="customerOrder?id=${customerId}">My Orders</a>
 </h5>
+<form action="filterItems" method="get" align="center">
+  <input type="text" name="name" id="name"><button type="submit" >Search</button>
+</form>
+
+<form style="margin-top: 7px" action="filterItemsByPrice" method="get" align="center">
+  <label style="color: blue">Filter By Price</label><br>
+  Min<input type="number" name="minPrice">Max<input type="number" name="maxPrice"><button type="submit" >Filter</button>
+</form>
 <form action="saveOrder" method="post">
 <div class="container container-fluid item-list">
   <input type="hidden" value="${customerId}" name="customerId">

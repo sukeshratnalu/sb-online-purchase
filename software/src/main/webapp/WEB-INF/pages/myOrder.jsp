@@ -31,7 +31,7 @@
    
               <th>Order</th>
               <th>Items</th>
-              <th>Price</th>
+              <th>Price Rs.</th>
               <th>Action</th>
               <c:forEach var="order" items="${customerOrder}">
                   <tr>
@@ -39,7 +39,7 @@
                       <td>${order.name}</td>
                       <td><a style="color: green;" href="orderItems?id=${order.id}&custId=${customerId}">Order Items</a></td>
                       <td>${order.price}</td>
-                      <td><a style="color: blue;" href="orderItems?id=${order.id}&custId=${customerId}">Update Items</a> &nbsp;&nbsp;
+                      <td><a style="color: blue;" href="orderItems?id=${order.id}&custId=${customerId}">Update Order</a> &nbsp;&nbsp;
                                <a  style="color: red;" href="deleteOrder?id=${order.id}&custId=${customerId}">Delete</a></td>
    
                   </tr>

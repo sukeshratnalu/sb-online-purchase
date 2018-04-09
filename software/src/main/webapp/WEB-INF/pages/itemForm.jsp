@@ -32,6 +32,10 @@
         <td><form:input path="price" /></td>
       </tr>
       <tr>
+        <td>Quantity:</td>
+        <td><form:input path="count" /></td>
+      </tr>
+      <tr>
         <td colspan="2" align="center"><input type="submit" value="Save" /></td>
       </tr>
     </table>

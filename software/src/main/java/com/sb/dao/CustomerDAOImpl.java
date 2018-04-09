@@ -3,8 +3,10 @@ package com.sb.dao;
 import com.sb.model.Customer;
 import com.sb.model.Item;
 import com.sb.model.Order;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -47,6 +49,13 @@ public class CustomerDAOImpl implements CustomerDAO {
   public Customer getCustomer(Integer customerId) {
       return (Customer) sessionFactory.getCurrentSession().get(
               Customer.class, customerId);
+  }
+
+  @Override
+  public List<Customer> filterCustomer(String name) {
+      Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
+      criteria.add( Restrictions.like("name", "%"+name+"%").ignoreCase());
+      return criteria.list();
   }
 
 }

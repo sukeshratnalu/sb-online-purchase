@@ -15,4 +15,5 @@ public interface CustomerDAO {
 
   public Customer getCustomer(Integer customerId);
 
+  public List<Customer> filterCustomer(String name);
 }

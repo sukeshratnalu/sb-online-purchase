@@ -21,6 +21,15 @@
         background-color: #dddddd;
     }
 </style>
+
+<script !src="">
+    function searchByName() {
+        var input = document.getElementById('name').value;
+        var request = new XMLHttpRequest();
+        window.location.href = "filterCustomer?name="+input;
+
+    }
+</script>
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -32,9 +41,14 @@
 <body>
     <div align="center">
             <h1>Customer List</h1>
-            <h3>
+            <h6>
                 <a href="newCustomer">New Customer</a> <a href="newItem">New Item</a>
-            </h3>
+            </h6>
+    <%--<form action="filterCustomer" method="get">--%>
+        <div align="center">
+            <input type="text" name="name" id="name"><button type="button" onclick="searchByName()" >Search</button>
+        </div>
+    <%--</form>--%>
 
             <table border="1">
      

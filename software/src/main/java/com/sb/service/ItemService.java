@@ -14,4 +14,8 @@ public interface ItemService {
   public Item updateItem(Item item);
 
   public Item getItem(Integer itemId);
+
+  public List<Item> filterItemsByPrice(Integer minPrice, Integer maxPrice);
+
+  public List<Item> filterItems(String name);
 }

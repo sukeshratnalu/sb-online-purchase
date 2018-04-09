@@ -34,10 +34,7 @@ public class CustomerController {
   public ModelAndView listCustomer() throws IOException {
     ModelAndView model = new ModelAndView("home");
     List<Customer> listCustomer = customerService.getAllCustomers();
-    System.out.println("Customer Data");
-    System.out.println(listCustomer);
     model.addObject("listCustomer", listCustomer);
-    System.out.println(model);
     return model;
   }
 
@@ -46,6 +43,15 @@ public class CustomerController {
     Customer customer = new Customer();
     model.addObject("customer", customer);
     model.setViewName("customer");
+    return model;
+  }
+
+  @RequestMapping(value = "/filterCustomer", method = RequestMethod.GET)
+  public ModelAndView filterCustomer(HttpServletRequest request) {
+    ModelAndView model = new ModelAndView("home");
+    String name = request.getParameter("name");
+    List<Customer> listCustomer = customerService.filterCustomer(name);
+    model.addObject("listCustomer", listCustomer);
     return model;
   }
 

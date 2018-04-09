@@ -41,12 +41,30 @@ public class ItemController {
   }
 
   @RequestMapping(value = "/saveItem", method = RequestMethod.POST)
-  public ModelAndView saveCustomer(@ModelAttribute Item item) {
+  public ModelAndView saveItem(@ModelAttribute Item item) {
     if (item.getId() == null) {
       itemService.addItems(item);
     } else {
       itemService.updateItem(item);
     }
     return new ModelAndView("redirect:/");
+  }
+
+  @RequestMapping(value = "/filterItems")
+  public ModelAndView filterItem(HttpServletRequest request) {
+    ModelAndView model = new ModelAndView("item");
+    String name = request.getParameter("name");
+    List<Item> listItem = itemService.filterItems(name);
+    model.addObject("listItem", listItem);
+    return model;
+  }
+  @RequestMapping(value = "/filterItemsByPrice")
+  public ModelAndView filterItemsByPrice(HttpServletRequest request) {
+    ModelAndView model = new ModelAndView("item");
+    int minPrice = Integer.parseInt(request.getParameter("minPrice"));
+    int maxPrice = Integer.parseInt(request.getParameter("maxPrice"));
+    List<Item> listItem = itemService.filterItemsByPrice(minPrice, maxPrice);
+    model.addObject("listItem", listItem);
+    return model;
   }
 }

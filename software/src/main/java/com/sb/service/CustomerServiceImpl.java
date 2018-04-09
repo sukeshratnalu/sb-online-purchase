@@ -42,4 +42,9 @@ public class CustomerServiceImpl implements CustomerService {
     Hibernate.initialize(customer.getCustomerOrders());
     return customer;
   }
+
+  @Override
+  public List<Customer> filterCustomer(String name) {
+    return customerDAO.filterCustomer(name);
+  }
 }

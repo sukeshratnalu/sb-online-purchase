@@ -14,4 +14,6 @@ public interface CustomerService {
   public Customer updateCustomer(Customer customer);
 
   public Customer getCustomer(Integer customerId);
+
+  public List<Customer> filterCustomer(String name);
 }

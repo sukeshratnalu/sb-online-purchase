@@ -15,4 +15,8 @@ public interface ItemDAO {
     public Item updateItem(Item item);
 
     public Item getItem(Integer itemId);
+
+    public List<Item> filterItems(String name);
+
+    public List<Item> filterItemsByPrice(Integer minPrice, Integer maxPrice);
 }

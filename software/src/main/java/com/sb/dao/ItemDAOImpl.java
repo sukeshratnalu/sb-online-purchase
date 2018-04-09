@@ -1,8 +1,9 @@
 package com.sb.dao;
 
-import com.sb.model.Customer;
 import com.sb.model.Item;
+import org.hibernate.Criteria;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -38,5 +39,19 @@ public class ItemDAOImpl implements ItemDAO{
     public Item getItem(Integer itemId) {
         return (Item) sessionFactory.getCurrentSession().get(
                 Item.class, itemId);
+    }
+
+    @Override
+    public List<Item> filterItems(String name) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Item.class);
+        criteria.add( Restrictions.like("name", "%"+name+"%").ignoreCase());
+        return criteria.list();
+    }
+
+    @Override
+    public List<Item> filterItemsByPrice(Integer minPrice, Integer maxPrice) {
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Item.class);
+        criteria.add( Restrictions.between("price", minPrice, maxPrice));
+        return criteria.list();
     }
 }
